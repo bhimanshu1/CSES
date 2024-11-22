@@ -23,14 +23,14 @@ int solve()
         cin >> pos;
 
         auto it = ms.upper_bound(pos);   // closest bigger value
-        auto sm = prev(it);   // closest smallest value;
+        auto sm = prev(it);   // closest smaller value;
 
         int lft = *sm;
         int rgt  = *it;
         ms2.erase(ms2.find(rgt - lft));  // now delete the max diff
 
-        ms2.insert((pos - lft));  // add the smaller differences
-        ms2.insert((rgt - pos));  // add the larget differences
+        ms2.insert((pos - lft));  // add the left difference
+        ms2.insert((rgt - pos));  // add the right difference
         ms.insert(pos);
 
         cout << *(prev(ms2.end())) << " ";
